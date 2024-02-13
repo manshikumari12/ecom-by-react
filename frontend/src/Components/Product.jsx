@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom";
 
 const Product = ()=>{
     //  const [product,setProduct ]=useState([])
@@ -62,7 +63,8 @@ return(
               <p>Price: {product.price}</p>
               <p>Category: {product.category}</p>
               <p>Striked Off Price: {product.strikedOffPrice}</p>
-              <button>Delete</button>
+         <Link to={`/product/${product._id}`}>View</Link>
+             <button>add to cart</button>
             </li>
           ))}
         </ul>

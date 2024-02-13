@@ -22,4 +22,20 @@ productRouter.post("/add",async(req,res)=>{
         res.status(400).send({"msg":err.message}) 
     }
 })
+
+productRouter.get("/:productId",async(req,res)=>{
+    try {
+    const productId = req.params.productId;
+    const product = await productModel.findById(productId);
+
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    res.json(product);
+  } catch (error) {
+    console.error('Error fetching product:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+})
 module.exports={productRouter}
