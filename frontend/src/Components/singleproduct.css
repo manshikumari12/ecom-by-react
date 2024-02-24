@@ -1,0 +1,35 @@
+.product-details {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.product-details img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.product-details h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.product-details p {
+    margin-bottom: 5px;
+}
+
+.product-details .price {
+    font-weight: bold;
+}
+
+.product-details .category {
+    font-style: italic;
+    color: #666;
+}
+
+.product-details .striked-off-price {
+    text-decoration: line-through;
+    color: #999;
+}

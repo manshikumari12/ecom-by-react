@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
+import "./product.css"
 
 const Product = ()=>{
     //  const [product,setProduct ]=useState([])
@@ -52,25 +53,30 @@ return(
 
     </div> */}
 
-<h1>Product List</h1>
-      {products.length > 0 ? (
-        <ul>
-          {products.map(product => (
-            <li key={product._id}>
-              <img src={product.img} alt={product.title} />
-              <h2>{product.title}</h2>
-              <p>{product.desc}</p>
-              <p>Price: {product.price}</p>
-              <p>Category: {product.category}</p>
-              <p>Striked Off Price: {product.strikedOffPrice}</p>
-         <Link to={`/product/${product._id}`}>View</Link>
-             <button>add to cart</button>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No products available</p>
-      )}
+
+<div className="product-list">
+  <h1>Product List</h1>
+  {products.length > 0 ? (
+    <ul>
+      {products.map(product => (
+        <li key={product._id} className="product-item">
+          <img src={product.img} alt={product.title} />
+          <h2>{product.title}</h2>
+          <p>{product.desc}</p>
+          <p>Price: {product.price}</p>
+          <p>Category: {product.category}</p>
+          <p>Striked Off Price: {product.strikedOffPrice}</p>
+          <Link to={`/product/${product._id}`} className="view-link">View</Link>
+          <button className="add-to-cart-button">Add to Cart</button>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p>No products available</p>
+  )}
+</div>
+
+
 
 
 

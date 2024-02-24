@@ -6,10 +6,14 @@ import {Route,Routes} from "react-router-dom"
 import { Product } from './Components/Product';
 import { Nav } from './Components/Nav';
 import { SingleProduct } from './Components/SingleProduct';
+import { Home } from './Components/Home';
+
 function App() {
   return (
   <div>
     <Nav/>
+    
+    <Home/>
     <Routes>
       <Route path="/signup" element={<Signup/>}/>
       <Route path="/login" element={<Login/>}/>

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import './signup.css';
 
 const Signup = ()=>{
     const [name,setName] =useState("")
@@ -28,8 +29,9 @@ const Signup = ()=>{
 
 return (
     <>
-     <h1>Registration Page</h1>
-    <div>
+     
+    <div className="signup-container">
+        <h1>Registration Page</h1>
         Name:<input type="text" placeholder="name..." value={name} onChange={(e)=>setName(e.target.value)}/>
         Email:<input type="text" placeholder="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
         password:<input type="password" placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
