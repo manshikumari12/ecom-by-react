@@ -1,10 +1,10 @@
 const express=require("express")
 const {connection}=require("./db")
 const {userRouter}=require("./routes/user.routes")
-// const {noteRouter}=require("./routes/note.routes")
-
+const {cartRouter} = require("./routes/cart.router")
+const {orderrouter}=require("./routes/order.router")
 const {productRouter}=require("./routes/product.router")
-// const {auth}=require("./middleware/auth.middleware")
+const {auth} =require("./middleware/auth.middleware")
 const cors=require("cors")
 const app=express()
 app.use(express.json())
@@ -12,9 +12,11 @@ app.use(cors())
 
 app.use("/users",userRouter)
 
-// app.use("/notes",noteRouter)
+
 app.use("/product",productRouter)
-// app.use(auth)
+app.use("/api",orderrouter)
+app.use("/cart",auth,cartRouter)
+
 
 app.listen(1111,async()=>{
     try{

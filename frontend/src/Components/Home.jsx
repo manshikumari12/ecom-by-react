@@ -5,6 +5,7 @@ import { Slidercard } from './Slidercard';
 import { Imagesliderbottom } from './Imagesliderbottom';
 import { Imagecard } from './Imagecard';
 import { Footer } from './Footer';
+// import { Product } from './Product';
 
 
 
@@ -23,6 +24,11 @@ return (
         </div>
         
      
+      </section>
+      <section>
+        <div className="product">
+            {/* <Product/> */}
+        </div>
       </section>
     
    <section className="deals">

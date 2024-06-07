@@ -1,12 +1,16 @@
 const mongoose=require("mongoose")
 
 const productSchema=mongoose.Schema({
-    img:String,
-    title:String,
-    desc:String,
-    price:String,
-    category:String,
-    strikedOffPrice:String,
+    image: String,
+    title: String,
+    price: Number,
+    description: String,
+    category: String,
+
+    rating: {
+        rate: Number,
+        count: Number
+    }
    
 
 },{

@@ -1,10 +1,14 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 import "./login.css"
+
 
 const Login = () =>{
 
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
+
+     const navigate = useNavigate(); 
 
     const handleSubmit  = () =>{
 
@@ -23,12 +27,15 @@ const Login = () =>{
         },
         body:JSON.stringify(payload)
     }).then(res=>res.json())
-    .then(res=>{
+    .then((res)=>{
         console.log(res)
+        alert("Login sucessfully !!")
+        navigate("/");
         localStorage.setItem("token",res.token)
         localStorage.setItem("name",res.name)
         localStorage.setItem("userid",res.userid)
-        localStorage.setItem("role",res.role)
+        localStorage.setItem("email",res.email)
+      
     })
     .catch((err)=> console.log(err))
        
@@ -37,13 +44,15 @@ const Login = () =>{
 
     return(
         <>
-           
-            <div className="login-container ">
+           <div className="signup-login-container">
+ <div className="login-container ">
                  <h1>Login Here</h1>
                 Email:<input type="text" placeholder="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
         password:<input type="password" placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)}/> 
                  <button onClick={handleSubmit} >Submit</button>
             </div>
+           </div>
+           
         </>
     )
 }

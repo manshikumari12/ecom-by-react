@@ -17,7 +17,7 @@ productRouter.post("/add",async(req,res)=>{
         const product=new productModel(req.body)
         console.log(product)
         await product.save()
-        res.status(200).send({"msg":"A new product has been added"}) 
+        res.status(200).send({"msg":"A new product has been added",product}) 
     }catch(err){
         res.status(400).send({"msg":err.message}) 
     }

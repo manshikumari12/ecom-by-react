@@ -1,10 +1,9 @@
 const mongoose=require("mongoose")
 
 //user schema
-const userSchema=mongoose.Schema({
-    name: String,
+const orderSchema =mongoose.Schema({
+
     email: String,
-    password: String,
      orders: [
         {
             product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
@@ -16,14 +15,13 @@ const userSchema=mongoose.Schema({
             phone: { type: Number, },
         }
     ]
-
     
 },{
     versionKey:false
 })
 
-const UserModel=mongoose.model("user",userSchema)
+const ordermodel=mongoose.model("order",orderSchema)
 
 module.exports={
-    UserModel
+    ordermodel
 }

@@ -1,5 +1,8 @@
 /* signup.css */
-
+.signup-login-container {
+    /* border: 1px solid #861a1a; */
+    margin-top: 80px;
+}
 .signup-container {
     max-width: 400px;
     margin: 0 auto;

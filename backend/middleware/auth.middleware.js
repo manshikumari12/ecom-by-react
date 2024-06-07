@@ -1,40 +1,27 @@
-const jwt=require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
 
+const auth = (req, res, next) => {
+    const token = req.headers.authorization;
 
-
-
-const auth=(req,res,next)=>{
-    const token=req.headers.authorization
-    if(token){
-        jwt.verify(token, 'masai', function(err, decoded) {
-            if(decoded){
-             console.log(decoded)
-             req.body.userid=decoded.userid
-             next()
-            }else{
-                res.status(400).send({"msg":"Invalid Password"})
-            }
-          });
-    }else{
-        res.status(400).send({"msg":"Invalid Credentials"})
+    if (!token) {
+        return res.status(401).json({ msg: "Token Missing" });
     }
 
-}
-// const auth=(req,res,next)=>{
-//     const token=req.headers.authorization.split(" ")[1]
-//     if(token){
-//         const decoded=jwt.verify(token,"masai")
-//         if(decoded){
-//             req.body.userID=decoded.userID
-//             next()
-//         } else {
-//             res.status(400).send({"msg":"Please Login First!"})
-//         }
-//     } else {
-//         res.status(400).send({"msg":"Please Login First!"})
-//     }
-// }
+    jwt.verify(token, "masai", (err, decoded) => {
+        if (err) {
+            return res.status(401).json({ msg: "Invalid Token" });
+        }
 
-module.exports={
-    auth
-}
+        req.user = {
+            userid: decoded.userid,
+            name: decoded.name,
+            email: decoded.email,
+          
+        };
+        next();
+    });
+};
+
+
+
+module.exports={auth}

@@ -7,10 +7,10 @@ const bcrypt = require('bcrypt');
 
 //registration
 userRouter.post("/signup",async(req,res)=>{
-    const {name,email,password,role}=req.body
+    const {name,email,password,}=req.body
     try{
         bcrypt.hash(password, 5, async (err, hash) => {
-            const user=new UserModel({name,email,password:hash,role})
+            const user=new UserModel({name,email,password:hash,})
             await user.save()
             res.status(200).send({"msg":"Registration has been done!"})
         });
@@ -20,25 +20,43 @@ userRouter.post("/signup",async(req,res)=>{
 })
 
 //login(authentication)
-userRouter.post("/login",async(req,res)=>{
-    const {email,password}=req.body
-    try{
-        const user=await UserModel.findOne({email})
-        if(user){
-            bcrypt.compare(password,user.password, (err, result) => {
-                if(result){
-                    res.status(200).send({"msg":"Login successfull!","token":jwt.sign({"userID":user._id},"masai"),"name":user.name,"role":user.role,"userid":user._id})
+userRouter.post("/login", async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await UserModel.findOne({ email });
+        if (user) {
+            bcrypt.compare(password, user.password, (err, result) => {
+                if (result) {
+                    const token = jwt.sign({ userid: user._id }, 'masai', { expiresIn: '1h' });
+                    res.status(200).send({
+                        "msg": "Login successful!",
+                        "token": token,
+                        "name": user.name,
+                        "userid": user._id,
+                        "email": user.email
+                    });
                 } else {
-                    res.status(400).send({"msg":"Wrong Credentials"})
+                    res.status(400).send({ "msg": "Wrong Credentials" });
                 }
             });
+        } else {
+            res.status(404).send({ "msg": "User not found" });
         }
-    }catch(err){
-        res.status(400).send({"msg":err.message})
+    } catch (err) {
+        res.status(400).send({ "msg": err.message });
+    }
+});
+
+
+//get all email
+userRouter.get("/",async(req,res)=>{
+    try {
+        const user = await UserModel.find()
+        res.status(200).send({"msg":"all user Data !!",user})
+    } catch (error) {
+           res.status(400).send({"msg":err.message})
     }
 })
-
-
 module.exports={
     userRouter
 }

@@ -8,7 +8,10 @@
     border-radius: 5px;
     background-color: #f9f9f9;
 }
-
+.signup-login-container{
+    /* border: 1px solid #861a1a; */
+    margin-top: 80px;
+}
 .login-container h1 {
     text-align: center;
 }
