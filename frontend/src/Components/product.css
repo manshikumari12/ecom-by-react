@@ -133,7 +133,8 @@ display: grid;
 
 /* Add to cart button */
 .add-to-cart-button {
-    background-color: #28a745;
+    border: 2px solid #f5f5f8;
+        background-color: #101111;
     color: white;
     border: none;
     border-radius: 4px;
@@ -144,21 +145,22 @@ display: grid;
 }
 
 .add-to-cart-button:hover {
-    background-color: #218838;
+    border: 2px solid #f5f5f8;
+        background-color: #101111;
 }
 
-/* View link */
+
 .view-link {
     display: inline-block;
     margin-top: 10px;
-    color: #007bff;
+    color: #333435;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.2s;
 }
 
 .view-link:hover {
-    color: #0056b3;
+    color: #19191a;
 }
 
 /* Responsive adjustments */
