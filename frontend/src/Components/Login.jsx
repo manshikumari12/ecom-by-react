@@ -11,7 +11,10 @@ const Login = () =>{
      const navigate = useNavigate(); 
 
     const handleSubmit  = () =>{
-
+ if (!email || !password) {
+      alert("Please fill in all fields.");
+      return;
+    }
         const payload ={
         email:email,
         password:password
@@ -28,16 +31,29 @@ const Login = () =>{
         body:JSON.stringify(payload)
     }).then(res=>res.json())
     .then((res)=>{
-        console.log(res)
-        alert("Login sucessfully !!")
-        navigate("/");
-        localStorage.setItem("token",res.token)
-        localStorage.setItem("name",res.name)
-        localStorage.setItem("userid",res.userid)
-        localStorage.setItem("email",res.email)
+        if (res.token) {
+         
+          console.log(res);
+          alert("Login successful!");
+          navigate("/");
+          localStorage.setItem("token", res.token);
+          localStorage.setItem("name", res.name);
+          localStorage.setItem("userid", res.userid);
+          localStorage.setItem("email", res.email);
+        } else if (res.msg === "Invalid credentials"){
+         
+        alert("Invalid credentials. Please check your email and password.");
+          
+        }else {
+         
+          alert(res.msg || "Invalid credentials");
+        }
       
     })
-    .catch((err)=> console.log(err))
+    .catch((err)=>{
+             console.log(err);
+        alert("Invalid Credentials");
+    } )
        
     }
 

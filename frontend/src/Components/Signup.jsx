@@ -1,4 +1,5 @@
 import { useState } from "react"
+import {useNavigate} from "react-router-dom"
 
 import './signup.css';
 
@@ -7,9 +8,15 @@ const Signup = ()=>{
     const [email,setEmail] =useState("")
     const [password,setPassword] =useState("")
 
+ const navigate =useNavigate()
+  
 
 
   const handleSubmit = () =>{
+    if(!name||!email||!password){
+    alert("Please fill in all fields.")
+    return 
+}
     const payload={
         email:email,
         name:name,
@@ -28,6 +35,7 @@ const Signup = ()=>{
     .then((res) =>{
         console.log(res)
         alert("Signup successfully");
+         navigate("/login");
     })
     .catch((err)=> console.log(err))
   }

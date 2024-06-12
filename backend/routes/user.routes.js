@@ -3,12 +3,17 @@ const userRouter=express.Router()
 const {UserModel}=require("../model/user.model")
 const jwt=require("jsonwebtoken")
 const bcrypt = require('bcrypt');
+const { blacklistModel } = require("../model/black.list.model");
+const { auth } = require("../middleware/auth.middleware");
 
 
 //registration
 userRouter.post("/signup",async(req,res)=>{
     const {name,email,password,}=req.body
-    try{
+    if(!name||!email||!password){
+        return res.status(400).send({"msg":"All Fileds Required!!"})
+    }else{
+  try{
         bcrypt.hash(password, 5, async (err, hash) => {
             const user=new UserModel({name,email,password:hash,})
             await user.save()
@@ -17,13 +22,21 @@ userRouter.post("/signup",async(req,res)=>{
     }catch(err){
         res.status(400).send({"msg":err.message})
     }
+    }
+  
 })
 
 //login(authentication)
 userRouter.post("/login", async (req, res) => {
     const { email, password } = req.body;
-    try {
+    if(!email||!password){
+         return res.status(400).send({"msg":"All Fileds Required!!"})
+    }else{
+   try {
         const user = await UserModel.findOne({ email });
+            if (!user) {
+      return res.status(404).send({ msg: 'User not found' });
+    }
         if (user) {
             bcrypt.compare(password, user.password, (err, result) => {
                 if (result) {
@@ -45,6 +58,8 @@ userRouter.post("/login", async (req, res) => {
     } catch (err) {
         res.status(400).send({ "msg": err.message });
     }
+    }
+ 
 });
 
 
@@ -57,6 +72,38 @@ userRouter.get("/",async(req,res)=>{
            res.status(400).send({"msg":err.message})
     }
 })
+
+
+//logout 
+
+userRouter.get("/logout",auth,async(req,res)=>{
+  
+    const token = req.headers.authorization;
+   
+    if(!token ){
+        return res.status(400).send({"msg":"Invalid token!!"})
+    }else{
+        try {
+            const blacklist =new blacklistModel({token})
+            await blacklist.save()
+            return res.status(200).send({"msg":"Logout Sucessfully!!"})
+        } catch (error) {
+             return res.status(500).send({ "msg": "Logged out failed!" });
+        }
+    }
+})
+
+
+// placeorder 
+
+// userRouter.post("/placeorder",async(req,res)=>{
+
+// })
+
+// //getorder
+// userRouter.get("/",async(req,res)=>{
+    
+// })
 module.exports={
     userRouter
 }

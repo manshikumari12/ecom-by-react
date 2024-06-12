@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./product.css"
 import { Footer } from "./Footer";
 
 const Product = ()=>{
 
 const [products, setProducts] = useState([]);
-
+  const navigate = useNavigate(); 
   useEffect(() => {
     fetch('http://localhost:1111/product')
       .then(response => response.json())
@@ -22,17 +23,19 @@ const [products, setProducts] = useState([]);
 
 const handleAddToCart = (product) => {
   const token = localStorage.getItem('token');
-  const email = localStorage.getItem('email'); // Make sure to retrieve email from localStorage
-  console.log(token);
-  console.log(email);
+  const email = localStorage.getItem('email'); 
+  // console.log(token);
+  // console.log(email);
   
   if (!token) {
     alert('Please login first!');
+       navigate("/Login");
     return;
   }
 
   if (!email) {
     alert('Email not found. Please login again.');
+
     return;
   }
 
