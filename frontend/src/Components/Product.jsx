@@ -9,7 +9,7 @@ const Product = ()=>{
 const [products, setProducts] = useState([]);
   const navigate = useNavigate(); 
   useEffect(() => {
-    fetch('http://localhost:1111/product')
+    fetch('https://e-com-backend-dad7.onrender.com/product')
       .then(response => response.json())
       .then(data => {
         setProducts(data); 
@@ -40,7 +40,7 @@ const handleAddToCart = (product) => {
   }
 
   const productWithUserEmail = { ...product, email }; 
-  fetch('http://localhost:1111/cart/add', {
+  fetch('https://e-com-backend-dad7.onrender.com/cart/add', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

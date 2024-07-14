@@ -11,7 +11,7 @@ const SingleProduct = (props) => {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:1111/product/${productId}`)
+    fetch(`https://e-com-backend-dad7.onrender.com/product/${productId}`)
       .then(res => res.json())
       .then((res) => {
         setProduct(res);

@@ -24,7 +24,7 @@ const Signup = ()=>{
     
     }
     console.log(payload);
-    fetch("http://localhost:1111/users/signup",{
+    fetch("https://e-com-backend-dad7.onrender.com/users/signup",{
         method:"POST",
         headers:{
             "Content-type":"application/json"

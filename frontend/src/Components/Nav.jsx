@@ -13,7 +13,7 @@ const Nav =() =>{
     }
 
     try {
-      const response = await fetch('http://localhost:1111/users/logout', {
+      const response = await fetch('https://e-com-backend-dad7.onrender.com/users/logout', {
         method: 'GET',
         headers: {
           'Authorization': token,

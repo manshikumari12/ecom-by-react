@@ -5,13 +5,64 @@ const Cart = () => {
   const [Totalitemincart, setTotalitemincart] = useState(0);
    const [Amount, setAmount] = useState(0);
 
+
+
+  //  const [email,setEmail] =useState('')
+  //   const [name, setName] = useState('');
+  //   const [address, setAddress] = useState('');
+  //   const [pincode, setPincode] = useState('');
+  //   const [phone, setPhone] = useState('');
+
+
+
+
+//  const handlePlaceSubmit = async (e) => {
+//     e.preventDefault();
+
+//     const token = localStorage.getItem('token'); 
+
+//     const orderData = {
+//       email,
+//       name,
+//       address,
+//       pincode,
+//       phone,
+//       items: cart, 
+//     };
+
+//     try {
+//       const response = await fetch('http://localhost:1111/users/placeorder', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//           'Authorization': token, 
+//         },
+//         body: JSON.stringify(orderData),
+//       });
+
+//       if (response.ok) {
+//         const result = await response.json();
+//         console.log('Order placed successfully:', result);
+       
+//       } else {
+//         console.error('Error placing order:', response.statusText);
+//         // Handle error in order placement (e.g., show an error message)
+//       }
+//     } catch (error) {
+//       console.error('Error placing order:', error);
+     
+//     }
+//   };
+
+
+
   const handleGetCart = () => {
     let token = localStorage.getItem("token");
     let email = localStorage.getItem("email");
-    console.log(token, email)
+    
     
     if (token && email) {
-      fetch(`http://localhost:1111/cart?email=${email}`, {
+      fetch(`https://e-com-backend-dad7.onrender.com/cart?email=${email}`, {
         method: 'GET',
         headers: {
           Authorization: token,
@@ -61,13 +112,13 @@ const Cart = () => {
 const handleDeleteFromCart = (productId) => {
   let token = localStorage.getItem("token");
   let email = localStorage.getItem("email");
-  console.log(token);
+
   if (!token || !email) {
     alert('Please login first!');
     return;
   }
 
-  fetch(`http://localhost:1111/cart/remove/${productId}`, {
+  fetch(`https://e-com-backend-dad7.onrender.com/cart/remove/${productId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -99,7 +150,7 @@ const handleQuantityUpdate = (itemId, quantity) => {
       itemId: itemId,
       quantity: quantity,
     };
-    fetch(`http://localhost:1111/cart/patch`, {
+    fetch(`https://e-com-backend-dad7.onrender.com/cart/patch`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -124,6 +175,13 @@ const handleQuantityUpdate = (itemId, quantity) => {
 
 
 
+
+
+  //orderplace submite
+
+
+
+
   useEffect(() => {
     handleGetCart();
   }, []);
@@ -140,7 +198,7 @@ const handleQuantityUpdate = (itemId, quantity) => {
       {Amount.toFixed(2)}
     </p>
     {cart.length > 0 ? (
-      cart.map((product) => {
+      cart.map((product,index) => {
         return (
           <section key={product._id} className="border item-container">
             <img
@@ -201,6 +259,32 @@ const handleQuantityUpdate = (itemId, quantity) => {
       </div>
     )}
   </div>
+
+{/*  
+ <div className="placeordersection">
+    {cart?.length ? (
+      <div className="place-order-container">
+        <form onSubmit={handlePlaceSubmit}>
+          <input type="text" placeholder="Email"  onChange={e => setEmail(e.target.value)} />
+
+          <input type="text" placeholder="Name"  onChange={e => setName(e.target.value)} />
+          <input type="text" placeholder="Address"  onChange={e => setAddress(e.target.value)} />
+          <input type="text" placeholder="Pincode"  onChange={e => setPincode(e.target.value)} />
+          <input type="text" placeholder="Phone" onChange={e => setPhone(e.target.value)} />
+          <button >Place Order</button>
+        </form>
+      </div>
+    ) : null}
+  </div> */}
+
+
+
+
+
+
+
+
+
 </div>
 
   );
