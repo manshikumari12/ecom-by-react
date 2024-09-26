@@ -52,7 +52,7 @@ const Slidercard = () =>{
            <img src="https://assets.ajio.com/cms/AJIO/WEB/D-1.0-UHP-01022024-TOPBRANDS-nikepuma-min35.jpg" alt="" />
           </div>
         </div>
-
+{/* lkcsjndlfsnlvnfskvsndl */}
 
          <div className="card-slide">
           <div className="card">
