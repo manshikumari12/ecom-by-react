@@ -1,29 +1,53 @@
-# ecom-by-react
+
+ecom-by-react
+E-Commerce Website<br> This is a full-stack e-commerce website built using React.js for the frontend and a Node.js/Express backend. The website allows users to sign up, log in, view products, and add them to a shopping cart.<br>
+
+Features<br>
+
+User Authentication: Sign up, log in, and log out functionalities.<br>
+Product Display: Users can browse through various products.<br>
+Single Product View: View detailed information about a selected product.<br>
+Shopping Cart: Add products to the cart.<br>
+Responsive Design: The application is optimized for mobile and desktop view.<br>
+Technologies Used<br>
+
+Frontend:<br>
+
+React.js: Main library for building the user interface.<br>
+React Router: For handling routing in the app.<br>
+Slick Carousel: For creating product sliders.<br>
+CSS: Custom styling for different components.<br>
 
 
 
-E-Commerce Website
-This is a full-stack e-commerce website built using React.js for the frontend and a Node.js/Express backend. The website allows users to sign up, log in, view products, and add them to a shopping cart.
+**Usage**<br>
+![landing](https://github.com/user-attachments/assets/4ffaeb1c-908a-4bf9-b1e8-1833855fb939)
+![Screenshot 2024-09-29 074732](https://github.com/user-attachments/assets/a8e9b6a2-5b38-4b80-a82c-07df24c396e5)
+![Screenshot 2024-09-29 074755](https://github.com/user-attachments/assets/84936213-9824-486a-958c-e800a52ea68a)
 
-Features
-User Authentication: Sign up, log in, and log out functionalities.
-Product Display: Users can browse through various products.
-Single Product View: View detailed information about a selected product.
-Shopping Cart: Add products to the cart.
-Responsive Design: The application is optimized for mobile and desktop view.
-Technologies Used
-Frontend:
-React.js: Main library for building the user interface.
-React Router: For handling routing in the app.
-Slick Carousel: For creating product sliders.
-CSS: Custom styling for different components.
-Backend:
-Node.js: Server-side JavaScript environment.
-Express.js: Web framework for building the API.
-MongoDB: NoSQL database to store user and product data.
-JWT Authentication: For secure user authentication.
-Project Structure
-bash
+- **Signup**: Users can sign up by entering a name, email, and password on the signup page.<br>
+
+![signup](https://github.com/user-attachments/assets/0b3c17b2-6d7b-4120-b502-ada1ab1acf03)
+
+- **Login**: After signing up, users can log in using their credentials.<br>
+![Screenshot 2024-09-29 074900](https://github.com/user-attachments/assets/4325d530-29f7-48c0-bd97-0b1370d5ac99)
+
+- **View Products**: Products are displayed on the homepage. You can also see detailed information for each product by clicking "View".<br>
+![Screenshot 2024-09-29 074922](https://github.com/user-attachments/assets/81beb9bb-6cc9-4b06-8e1b-473429d010c3)
+![Screenshot 2024-09-29 074949](https://github.com/user-attachments/assets/718619bb-363c-4226-b44c-6a059d389dab)
+
+- **Add to Cart**: Users can add products to the cart after logging in.<br>
+
+![Screenshot 2024-09-29 075010](https://github.com/user-attachments/assets/2c6fb14b-a4c0-40d4-888c-d132f4d84a82)
+Backend:<br>
+
+Node.js: Server-side JavaScript environment.<br>
+Express.js: Web framework for building the API.<br>
+MongoDB: NoSQL database to store user and product data.<br>
+JWT Authentication: For secure user authentication.<br>
+Project Structure<br>
+
+graphql
 Copy code
 ├── public/
 ├── src/
@@ -41,60 +65,60 @@ Copy code
 │       ├── Nav.css            # CSS for Navigation bar
 │       └── ...                # Other component styles
 └── README.md                  # Project documentation
-Installation
-Clone the repository:
+<br>
+Installation<br> Clone the repository:<br>
 
 bash
 Copy code
 git clone https://github.com/your-username/e-commerce-app.git
-Install the dependencies for the frontend:
+```<br>
 
-bash
-Copy code
+Install the dependencies for the frontend:<br>
+
+```bash
 cd e-commerce-app
 npm install
-Setup and install the backend dependencies:
+```<br>
 
-bash
-Copy code
+Setup and install the backend dependencies:<br>
+
+```bash
 cd backend
 npm install
-Start the backend server:
+```<br>
 
-bash
-Copy code
+Start the backend server:<br>
+
+```bash
 npm start
-Start the React app:
+```<br>
 
-bash
-Copy code
+Start the React app:<br>
+
+```bash
 cd ..
 npm start
-Navigate to http://localhost:3000 in your browser.
+```<br>
 
-Environment Variables
-For the backend, you will need to configure the following environment variables:
+Navigate to [http://localhost:3000](http://localhost:3000) in your browser.<br>
 
-MONGO_URI: MongoDB connection string.
-JWT_SECRET: A secret key for JWT authentication.
-Create a .env file in the backend folder and add these variables.
+**Environment Variables**<br>
+For the backend, you will need to configure the following environment variables:<br>
+- `MONGO_URI`: MongoDB connection string.<br>
+- `JWT_SECRET`: A secret key for JWT authentication.<br>
 
-API Endpoints
-POST /users/signup: Sign up a new user.
-POST /users/login: Log in an existing user.
-GET /product: Fetch all available products.
-GET /product/
-: Fetch details of a single product.
-POST /cart/add: Add a product to the user's cart.
-Usage
-Signup: Users can sign up by entering a name, email, and password on the signup page.
-Login: After signing up, users can log in using their credentials.
-View Products: Products are displayed on the homepage. You can also see detailed information for each product by clicking "View".
-Add to Cart: Users can add products to the cart after logging in.
-Future Enhancements
-Checkout Flow: Implementing the checkout process with payment gateway integration.
-Product Search: Add a search functionality to filter products by name, category, or price.
-User Profile: A profile page for users to view and update their account details.
-Order History: Track the order history for logged-in users.
-License
-This project is licensed under the MIT License.
+Create a `.env` file in the backend folder and add these variables.<br>
+
+**API Endpoints**<br>
+- `POST /users/signup`: Sign up a new user.<br>
+- `POST /users/login`: Log in an existing user.<br>
+- `GET /product`: Fetch all available products.<br>
+- `GET /product/:productId`: Fetch details of a single product.<br>
+- `POST /cart/add`: Add a product to the user's cart.<br>
+
+
+
+**Future Enhancements**<br>
+- **Order History**: Display users' past orders.<br>
+- **Product Search**: Implement a search bar to filter products.<br>
+- **Payment Integration**: Integrate a payment gateway for checking out products.<br>
